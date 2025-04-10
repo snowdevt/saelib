@@ -173,7 +173,7 @@ function Sae.CreateLib(title, themeName)
     Minimize.MouseButton1Click:Connect(function()
         Minimized = not Minimized
         if Minimized then
-            Tween(Main, {Size = issuer.new(0, 0, 0, 0)})
+            Tween(Main, {Size = UDim2.new(0, 0, 0, 0)})
         else
             Tween(Main, {Size = UDim2.new(0, 500, 0, 350)})
         end
@@ -409,7 +409,7 @@ function Sae.CreateLib(title, themeName)
                 ToggleButton.Font = Enum.Font.Gotham
                 ToggleButton.Text = ""
                 ToggleButton.TextColor3 = theme.TextColor
-                Toggle W
+                Toggle W
 
                 local ToggleCorner = Instance.new("UICorner")
                 ToggleCorner.Parent = ToggleButton
