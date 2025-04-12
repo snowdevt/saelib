@@ -1,4 +1,4 @@
-local Sae = {}
+local SimpleKavo = {}
 
 -- Serviços
 local TweenService = game:GetService("TweenService")
@@ -46,7 +46,7 @@ local function Tween(object, properties, duration)
 end
 
 -- Função para habilitar arrastar
-function Sae:DraggingEnabled(frame, parent)
+function SimpleKavo:DraggingEnabled(frame, parent)
     parent = parent or frame
     local dragging = false
     local dragInput, mousePos, framePos
@@ -90,12 +90,12 @@ function Sae:DraggingEnabled(frame, parent)
 end
 
 -- Função principal para criar a Window
-function Sae.CreateLib(title, themeName)
+function SimpleKavo.CreateLib(title, themeName)
     local theme = Themes[themeName] or Themes.DefaultTheme
     
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Parent = game.CoreGui
-    ScreenGui.Name = "Sae_"..tostring(math.random(1, 10000))
+    ScreenGui.Name = "SimpleKavo_"..tostring(math.random(1, 10000))
     ScreenGui.ResetOnSpawn = false
     
     local Main = Instance.new("Frame")
@@ -153,7 +153,7 @@ function Sae.CreateLib(title, themeName)
     Minimize.BackgroundTransparency = 0.5
     Minimize.Size = UDim2.new(0, 40, 0, 40)
     Minimize.Position = UDim2.new(0.3, -45, 0.3, -50)
-    Minimize.Image = "rbxassetid://128334668980442"
+    Minimize.Image = "rbxassetid://128334668980442" -- Ícone do Sae
     Minimize.ImageColor3 = theme.TextColor
 
     local MinimizeStroke = Instance.new("UIStroke")
@@ -167,7 +167,7 @@ function Sae.CreateLib(title, themeName)
     MinimizeCorner.CornerRadius = UDim.new(0, 8)
     MinimizeCorner.Parent = Minimize
 
-    Sae:DraggingEnabled(Minimize)
+    SimpleKavo:DraggingEnabled(Minimize)
 
     local Minimized = false
     Minimize.MouseButton1Click:Connect(function()
@@ -179,7 +179,7 @@ function Sae.CreateLib(title, themeName)
         end
     end)
     
-    Sae:DraggingEnabled(Header, Main)
+    SimpleKavo:DraggingEnabled(Header, Main)
     
     local TabsScroll = Instance.new("ScrollingFrame")
     TabsScroll.Name = "TabsScroll"
@@ -225,7 +225,7 @@ function Sae.CreateLib(title, themeName)
     local tabsOrder = {}
     local currentTab = nil
     
-    function Sae:AddTab(name)
+    function SimpleKavo:NewTab(name)
         local TabButton = Instance.new("TextButton")
         TabButton.Name = name
         TabButton.Parent = TabsHolder
@@ -409,8 +409,8 @@ function Sae.CreateLib(title, themeName)
                 ToggleButton.Font = Enum.Font.Gotham
                 ToggleButton.Text = ""
                 ToggleButton.TextColor3 = theme.TextColor
-                Toggle W
-
+                ToggleButton.TextSize = 14
+                
                 local ToggleCorner = Instance.new("UICorner")
                 ToggleCorner.Parent = ToggleButton
                 
@@ -736,7 +736,7 @@ function Sae.CreateLib(title, themeName)
     end
     
     return {
-        AddTab = Sae.AddTab,
+        NewTab = SimpleKavo.NewTab,
         ToggleUI = function()
             ScreenGui.Enabled = not ScreenGui.Enabled
         end,
@@ -754,4 +754,4 @@ function Sae.CreateLib(title, themeName)
     }
 end
 
-return Sae
+return SimpleKavo
